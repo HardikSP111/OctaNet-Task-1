@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<title>NoteIt</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="finalnew.css">
+</head>
+
+<body>
+
+    <img class="logo" src="Note It.png" alt="Note It">
+    <h1>Note It</h1>
+    <nav class="navbar">
+
+        <div class="dropdown">
+            <a class="navbardist">To-Do List</a>
+            <div class="dropdown-content">
+                <div id="myDIV" class="header">
+                    <input type="text" id="myInput" placeholder="Type Something">
+                    <span onclick="newElement()" class="todoadd">Add</span>
+                </div>
+
+                <ul id="myUL">
+                    <li>Pay bills</li>
+                    <li>Meet George</li>
+                    <li>Read a book</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="navbardist">Settings</a>
+            <div class="dropdown-content">
+                <span class="droplist">Mode</span>
+                <div class="onoff">
+                    <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round" onclick="mode()"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="navbardist">Calculator</a>
+            <div class="dropdown-content">
+                <div class="container">
+                    <br>
+                    <table>
+                        <tr>
+                            <td colspan="3">
+                                <input type="button" id='result' class='screen' style="text-align: right;">
+                            </td>
+                            <td>
+                                <input type="button" value='C' onclick="clearScreen()" class="clear" style="text-align: left;">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="keys">
+                        <input type="button" value="7" class="on" onClick="display('7')">
+                        <input type="button" value="8" class="on" onClick="display('8')">
+                        <input type="button" value="9" class="on" onClick="display('9')">
+                        <input type="button" value="/" class="operator" onClick="display('/')">
+                        <input type="button" value="4" class="on" onClick="display('4')">
+                        <input type="button" value="5" class="on" onClick="display('5')">
+                        <input type="button" value="6" class="on" onClick="display('6')">
+                        <input type="button" value="*" class="operator" onClick="display('*')">
+                        <input type="button" value="1" class="on" onClick="display('1')">
+                        <input type="button" value="2" class="on" onClick="display('2')">
+                        <input type="button" value="3" class="on" onClick="display('3')">
+                        <input type="button" value="-" class="operator" onClick="display('-')">
+                        <input type="button" value="0" class="on" onClick="display('0')">
+                        <input type="button" value="." class="on" onClick="display('.')">
+                        <input type="button" value="=" class="on equal-sign" onClick="solve()">
+                        <input type="button" value="+" class="operator" onClick="display('+')">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="navbardist">About</a>
+            <div class="dropdown-content">
+                <span>Project : Note It<hr>version 1.0</span>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="navbardist">Logout</a>
+            <div class="dropdown-content">
+                <a href="Login_Page1.php"><img src="logout.png" class="droplist"></a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a class="navbardist"><img id="user" src="https://img.icons8.com/material-rounded/24/000000/user.png"></a>
+            <div class="dropdown-content">
+                <span>Hello, User</span>
+            </div>
+        </div>
+
+    </nav>
+
+    <hr class="line"><br>
+
+    <!--<div class="search_bar">
+        <input type="text" class="searching" placeholder="Search Notes">
+        <img class="searchicon" src="searchicon.png" alt="Search Icon">
+    </div>-->
+
+    <div class="fix">
+        <input type="text" id="Inputinput" placeholder="Title">
+        <span onclick="newnoteelement()" class="addBtn">Add Note</span>
+        <ul id="mymy">
+
+        </ul>
+        <!-- <div class="button2" id="addNote" type="button" onclick="newnoteelementl()"><span class="add">Add Note</span></div>-->
+    </div>
+
+    <!-- <script>
+        function myFunction() {
+            var textArea = document.createElement("textarea");
+            document.body.appendChild(textArea);
+            textArea.focus()
+            textArea.select()
+        }
+
+        function mode() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+
+        function redirecttologin() {
+            confirm("Confirm To Leave this page ?");
+            close();
+        }
+
+        function display(val) {
+            document.getElementById('result').value += val;
+            return val;
+        }
+
+        function solve() {
+            let x = document.getElementById('result').value
+            let y = eval(x);
+            document.getElementById('result').value = y;
+            return y;
+        }
+
+        function clearScreen() {
+            document.getElementById('result').value = '';
+        }
+
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            myNodelist[i].appendChild(span);
+        }
+
+        // Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+
+        // Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
+
+        // Create a new list item when clicking on the "Add" button
+        function newElement() {
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+        }
+
+        // Create a new note item when clicking on the "Add" button
+        function newnoteelement() {
+            var li = document.createElement("textarea");
+            var inputValue = document.getElementById("Inputinput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("mymy").appendChild(li);
+            }
+            document.getElementById("Inputinput").value = "";
+        }
+    </script> -->
+
+    <fieldset class="fieldtext">
+        <legend id="legcategories">Categories</legend>
+        <textarea class="texty" id="mytext">Personal</textarea>
+        <textarea class="texty" id="mytext">Family</textarea>
+        <textarea class="texty" id="mytext">Work</textarea>
+        <textarea class="texty" id="mytext">Academics</textarea>
+    </fieldset>
+
+    <!-- <script>
+        function readread() {
+            document.getElementById("readon").readOnly = "true";
+        }
+    </script> -->
+</body>
+
+</html>
